@@ -24,3 +24,5 @@ fields:
 - name: showonlyimage
   type: boolean
   label: showonlyimage
+pages:
+- content/posts/hello-world.md
