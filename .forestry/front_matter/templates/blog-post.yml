@@ -16,3 +16,11 @@ fields:
     schema:
       format: markdown
   label: content
+- name: image
+  type: file
+  config:
+    maxSize: 250
+  label: image
+- name: showonlyimage
+  type: boolean
+  label: showonlyimage
