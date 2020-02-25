@@ -1,0 +1,19 @@
+version: "3"
+services:
+  development-01e5a27c2a6247838b482147364351d1-base:
+    image: development-01e5a27c2a6247838b482147364351d1-base
+    build:
+      context: ..
+      dockerfile: Dockerfile
+  development-01e5a27c2a6247838b482147364351d1-devcontainer:
+    depends_on: [ "development-01e5a27c2a6247838b482147364351d1-base" ]
+    network_mode: host
+    image: development-01e5a27c2a6247838b482147364351d1-devcontainer
+    env_file:
+     - .env
+    build:
+      context: ..
+      dockerfile: .devcontainer/dev.Dockerfile
+    volumes:
+      - ../.:/workspace
+    command: /bin/sh -c "while sleep 1000; do :; done"

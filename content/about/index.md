@@ -11,4 +11,4 @@ In Latin, this means "What person is a person who does not make the world a bett
 
 ![This is me][1]
 
-[1]: /img/ani-small.jpg
+[1]: /uploads/ani-small.jpg

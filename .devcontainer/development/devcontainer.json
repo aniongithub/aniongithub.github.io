@@ -1,0 +1,9 @@
+{
+	"name": "development",
+	"context": "..",
+	"workspaceFolder": "/workspace/",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "development-01e5a27c2a6247838b482147364351d1-devcontainer",
+	"shutdownAction": "stopCompose",
+	"settings": { "terminal.integrated.shell.linux": "/bin/bash" },
+}
