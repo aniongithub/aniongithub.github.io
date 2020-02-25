@@ -15,14 +15,5 @@ fields:
 - name: showonlyimage
   type: boolean
   label: showonlyimage
-- name: content
-  type: textarea
-  default: ''
-  config:
-    required: false
-    wysiwyg: true
-    schema:
-      format: markdown
-  label: content
 pages:
 - content/posts/hello-world.md
