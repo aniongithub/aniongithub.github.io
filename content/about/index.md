@@ -9,4 +9,4 @@ I'm a futurist who believes that science and technology are the answers to all o
 
 In Latin, this means "What person is a person who does not make the world a better place?". This is my motto and drives the core of what I am, and what I do. Most people have hobbies apart from the work they do. To me, research and development is my hobby. I've dedicated my life to creating devices, tools and technologies that make the world a better place.
 
-![Image that says Ani in fancy text](/uploads/ani-small.jpg)
+![](/uploads/ani-small.jpg)
