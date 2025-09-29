@@ -1,0 +1,40 @@
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  opacity: 0.7;
+}
+
+.theme-toggle:hover {
+  color: var(--color-text-primary);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+  opacity: 0.8;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* Clean Metro focus */
+.theme-toggle:focus {
+  outline: none;
+  color: var(--color-accent-primary);
+  opacity: 1;
+}

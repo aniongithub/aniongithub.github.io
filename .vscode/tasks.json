@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "waitForServer",
+			"type": "shell",
+			"command": "while ! nc -z localhost ${env:PORT}; do sleep 1; done",
+			"group": "none",
+			"problemMatcher": {
+				"base": "$tsc",
+				"background": {
+					"beginsPattern": ".*",
+					"endsPattern": ".*"
+				}
+			}
+		},
+		{
+			"label": "clientPreLaunch",
+			"type": "shell",
+			"command": "echo 'Preparing client debugger...'",
+			"dependsOn": [
+				"waitForServer"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: build",
+			"detail": "Run webpack"
+		},
+		{
+			"type": "npm",
+			"script": "watch",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: watch",
+			"detail": "Run webpack in watch mode"
+		}
+	]
+}

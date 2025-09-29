@@ -1,32 +1,59 @@
-name: github pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-    - source
+      - source
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout submodules
-      uses: srt32/git-actions@v0.0.3
-      with:
-        args: git submodule update --init --recursive
+      - name: Build Docker image from devcontainer
+        run: |
+          docker build -f .devcontainer/dev.Dockerfile -t portfolio-builder .
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2.2.0
-      with:
-        hugo-version: '0.62.2'
+      - name: Run build in container with secrets
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            -e USER_GITHUB_TOKEN="${{ secrets.USER_GITHUB_TOKEN }}" \
+            portfolio-builder bash -c "
+              # Install dependencies
+              npm install
+              
+              # Run build (which includes prebuild script using USER_GITHUB_TOKEN)
+              npm run build
+              
+              # Ensure dist directory has proper permissions
+              chmod -R 755 dist/
+              
+              # List contents for debugging
+              ls -la dist/
+            "
 
-    - name: Build
-      run: hugo --gc --minify --cleanDestinationDir
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.4.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./public
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
