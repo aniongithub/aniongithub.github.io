@@ -1,0 +1,6 @@
+{
+    "workbench.editorAssociations": {
+        "*.md": "zaaack.markdown-editor"
+    },
+    "markdown-editor.imageSaveFolder": "content/images"
+}

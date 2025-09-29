@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Server",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "http-server",
+            "runtimeArgs": [ "-p", "${env:PORT}", "./dist" ],
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {            
+            "name": "Client",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:${env:PORT}",
+            "webRoot": "${workspaceFolder}",
+            "preLaunchTask": "clientPreLaunch",
+            "browserLaunchLocation": "ui",
+            "runtimeExecutable": "stable",
+            "userDataDir": "${workspaceFolder}/.vscode/cache",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "presentation": {
+                "hidden": true
+            }   
+        }
+    ],
+    "compounds": 
+    [
+        {
+            "name": "Server/Client",
+            "configurations": ["Server", "Client"],
+            "stopAll": true
+        }
+    ]
+}

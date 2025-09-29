@@ -1,0 +1,11 @@
+.page {
+    padding: 2rem 0;
+}
+
+.loading {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 3rem 0;
+}

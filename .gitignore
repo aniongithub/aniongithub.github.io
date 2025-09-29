@@ -1,0 +1,6 @@
+dist
+node_modules
+articles.json
+.env
+ports.env
+github-data.json

@@ -1,0 +1,207 @@
+/* Metro Design System Styles */
+
+.metro-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.metro-title {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  margin: 0 0 2rem 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.metro-subtitle {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.metro-tile {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 2rem 0;
+  margin: 0 0 2rem 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: all 0.15s ease;
+}
+
+.metro-tile:hover {
+  padding-left: 1rem;
+}
+
+.metro-tile:last-child {
+  border-bottom: none;
+}
+
+.metro-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-background-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.metro-button:hover {
+  background: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.metro-loading {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Article Typography */
+.metro-tile-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.metro-tile-text {
+  flex: 1;
+}
+
+.metro-tile-arrow {
+  opacity: 0.4;
+  transition: all 0.15s ease;
+  margin-left: 2rem;
+}
+
+.metro-tile-arrow svg path {
+  fill: var(--color-text-primary);
+  transition: fill 0.15s ease;
+}
+
+.metro-tile:hover .metro-tile-arrow {
+  opacity: 1;
+  transform: translateX(0.5rem);
+}
+
+.metro-tile h3 {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 0.75rem 0;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.metro-tile .synopsis {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 0 0 1rem 0;
+  color: var(--color-text-secondary);
+}
+
+.metro-tile .meta {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metro-tile .author {
+  color: var(--color-text-muted);
+}
+
+.metro-tile .date {
+  color: var(--color-text-subtle);
+}/* Empty state styling */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding: 4rem 2rem;
+}
+
+.empty-state-content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.empty-state-content h2 {
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.empty-state-message {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .metro-section {
+    padding: 1rem 0;
+  }
+  
+  .empty-state {
+    min-height: 30vh;
+    padding: 2rem 1rem;
+  }
+  
+  .metro-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .metro-subtitle {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+  
+  .metro-tile {
+    padding: 1.5rem 0;
+  }
+  
+  .metro-tile h3 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+  
+  .metro-tile .synopsis {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+  
+  .metro-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+}
