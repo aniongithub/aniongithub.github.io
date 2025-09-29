@@ -20,7 +20,7 @@ const Articles: React.FC = () => {
       try {
         const loadedArticles: Article[] = [];
 
-        for (const file of articleFiles) {
+        for (const file of (articleFiles as string[])) {
           try {
             const response = await fetch(`/content/${file}`);
             if (response.ok) {
