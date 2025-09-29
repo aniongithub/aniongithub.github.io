@@ -6,9 +6,9 @@ const outputFile = path.join(__dirname, '../src/data/github-data.json');
 
 async function generateGitHubData() {
   // Require GitHub token
-  const token = process.env.GITHUB_TOKEN;
+  const token = process.env.USER_GITHUB_TOKEN;
   if (!token) {
-    throw new Error('GITHUB_TOKEN environment variable is required');
+    throw new Error('USER_GITHUB_TOKEN environment variable is required');
   }
 
   const headers = {
