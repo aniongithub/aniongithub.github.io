@@ -79,6 +79,7 @@ const About: React.FC = () => {
               pageNumber={pageNumber}
               renderTextLayer={false}
               renderAnnotationLayer={true}
+              devicePixelRatio={1}
               onRenderAnnotationLayerSuccess={() => {
                 console.log('Annotation layer rendered successfully');
               }}
