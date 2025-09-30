@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SitemapWebpackPlugin = require('./webpack/sitemap-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -103,6 +104,10 @@ module.exports = (env, argv) => {
           { from: 'node_modules/react-pdf/dist/Page/TextLayer.css', to: 'css/react-pdf-text.css' },
           { from: 'node_modules/pdfjs-dist/build/pdf.worker.min.mjs', to: 'js/pdf.worker.min.js' },
         ],
+      }),
+      new SitemapWebpackPlugin({
+        baseUrl: 'https://www.anionline.me',
+        articlesDataPath: 'src/data/articles.json'
       }),
     ],
   };

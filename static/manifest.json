@@ -1,0 +1,21 @@
+{
+  "name": "Ani Online - Software Developer",
+  "short_name": "Ani Online",
+  "description": "Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "developer", "portfolio"],
+  "lang": "en-US"
+}
