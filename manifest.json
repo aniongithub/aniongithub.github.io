@@ -1,0 +1,21 @@
+{
+  "name": "Ani Balasubramaniam's website",
+  "short_name": "Ani's website",
+  "description": "A Technical Leader with 30 years of professional experience and a highly specialized skill set for research/production AI/ML, simulation, real-time rendering, HPC/GPGPU, & game/video streaming, among other things",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "developer", "portfolio"],
+  "lang": "en-US"
+}
