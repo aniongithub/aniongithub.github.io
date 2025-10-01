@@ -6,6 +6,7 @@ import Articles from './Articles';
 import About from './About';
 import ArticleDetail from './ArticleDetail';
 import GitHub from './GitHub';
+import SEO from './SEO';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from '../contexts/ThemeContext';
@@ -33,8 +34,61 @@ const AnimatedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 const App: React.FC = () => {
   const location = useLocation();
 
+  // SEO content based on current route
+  const getSEOProps = () => {
+    const baseUrl = 'https://www.anionline.me/#';
+    
+    switch (location.pathname) {
+      case '/':
+        return {
+          title: 'Ani Online - Software Developer & Tech Enthusiast',
+          description: 'Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation. Explore my projects, articles, and GitHub contributions.',
+          url: `${baseUrl}/`,
+          type: 'website' as const
+        };
+      case '/about':
+        return {
+          title: 'About Ani - Software Developer Profile',
+          description: 'Learn more about Ani, a passionate software developer with expertise in various programming languages and technologies. View resume and professional background.',
+          url: `${baseUrl}/about`,
+          type: 'profile' as const
+        };
+      case '/articles':
+        return {
+          title: 'Articles - Tech Insights by Ani',
+          description: 'Read technical articles and insights on programming, software development, and technology trends written by Ani.',
+          url: `${baseUrl}/articles`,
+          type: 'website' as const
+        };
+      case '/github':
+        return {
+          title: 'GitHub Projects - Open Source Contributions by Ani',
+          description: 'Explore Ani\'s open source projects, contributions, and GitHub activity. Discover innovative solutions and code repositories.',
+          url: `${baseUrl}/github`,
+          type: 'website' as const
+        };
+      default:
+        if (location.pathname.startsWith('/articles/')) {
+          const slug = location.pathname.split('/articles/')[1];
+          return {
+            title: `${slug} - Article by Ani`,
+            description: `Read the article "${slug}" by Ani, covering insights on software development and technology.`,
+            url: `${baseUrl}${location.pathname}`,
+            type: 'article' as const
+          };
+        }
+        return {
+          title: 'Ani Online - Software Developer & Tech Enthusiast',
+          description: 'Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation.',
+          url: `${baseUrl}/`,
+          type: 'website' as const
+        };
+    }
+  };
+
   return (
     <ThemeProvider>
+      <SEO {...getSEOProps()} />
       <div className="metro-root min-h-screen flex flex-col">
         <Header />
 
