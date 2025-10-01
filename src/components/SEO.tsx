@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "Ani Online - Software Developer & Tech Enthusiast",
-  description = "Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation.",
+  title = "Ani Balasubramaniam's website",
+  description = "A Technical Leader with 30 years of professional experience and a highly specialized skill set for research/production AI/ML, simulation, real-time rendering, HPC/GPGPU, & game/video streaming, among other things",
   url = "https://www.anionline.me/",
   image = "https://www.anionline.me/assets/Ani.JPEG",
   type = "website",

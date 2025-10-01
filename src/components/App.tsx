@@ -41,8 +41,8 @@ const App: React.FC = () => {
     switch (location.pathname) {
       case '/':
         return {
-          title: 'Ani Online - Software Developer & Tech Enthusiast',
-          description: 'Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation. Explore my projects, articles, and GitHub contributions.',
+          title: 'Ani Balasubramaniam\'s website',
+          description: 'A Technical Leader with 30 years of professional experience and a highly specialized skill set for research/production AI/ML, simulation, real-time rendering, HPC/GPGPU, & game/video streaming, among other things',
           url: `${baseUrl}/`,
           type: 'website' as const
         };
@@ -78,8 +78,8 @@ const App: React.FC = () => {
           };
         }
         return {
-          title: 'Ani Online - Software Developer & Tech Enthusiast',
-          description: 'Personal website of Ani, a passionate software developer sharing insights on technology, programming, and innovation.',
+          title: 'Ani Balasubramaniam\'s website',
+          description: 'A Technical Leader with 30 years of professional experience and a highly specialized skill set for research/production AI/ML, simulation, real-time rendering, HPC/GPGPU, & game/video streaming, among other things',
           url: `${baseUrl}/`,
           type: 'website' as const
         };
