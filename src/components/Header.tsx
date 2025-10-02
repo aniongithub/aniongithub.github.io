@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import articles from '../data/articles.json';
 import './Header.css';
 
 const Header: React.FC = () => {
@@ -23,12 +24,14 @@ const Header: React.FC = () => {
         >
           Home
         </Link>
-        <Link 
-          to="/articles"
-          className={`tab ${isActive('/articles') ? 'active' : ''}`}
-        >
-          Articles
-        </Link>
+        {articles.length > 0 && (
+          <Link 
+            to="/articles"
+            className={`tab ${isActive('/articles') ? 'active' : ''}`}
+          >
+            Articles
+          </Link>
+        )}
         <Link 
           to="/github"
           className={`tab ${isActive('/github') ? 'active' : ''}`}
