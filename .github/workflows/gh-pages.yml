@@ -8,6 +8,9 @@ on:
     branches:
       - source
   workflow_dispatch:
+  schedule:
+    # Run daily at 1 AM PST (9 AM UTC)
+    - cron: '0 9 * * *'
 
 permissions:
   contents: write
@@ -50,14 +53,14 @@ jobs:
             "
 
       - name: Upload build artifacts (for deployment)
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'schedule'
         uses: actions/upload-artifact@v4
         with:
           name: dist
           path: './dist'
 
   deploy:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'schedule'
     needs: build
     runs-on: ubuntu-latest
     steps:
