@@ -64,15 +64,52 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: current-site
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: './dist'
 
+      - name: Check for changes
+        id: check-changes
+        run: |
+          # Remove .git directory from comparison
+          if [ -d "current-site/.git" ]; then
+            rm -rf current-site/.git
+          fi
+          
+          # Compare current site with new build
+          if [ -d "current-site" ] && [ "$(find current-site -type f | wc -l)" -gt 0 ]; then
+            # Calculate checksums for comparison
+            cd current-site && find . -type f -exec sha256sum {} \; | sort > ../current-checksums.txt
+            cd ../dist && find . -type f -exec sha256sum {} \; | sort > ../new-checksums.txt
+            
+            if cmp -s ../current-checksums.txt ../new-checksums.txt; then
+              echo "No changes detected in build output"
+              echo "has-changes=false" >> $GITHUB_OUTPUT
+            else
+              echo "Changes detected in build output"
+              echo "has-changes=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No existing site found, deploying initial version"
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to GitHub Pages
+        if: steps.check-changes.outputs.has-changes == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./dist
           publish_branch: master
+
+      - name: Skip deployment
+        if: steps.check-changes.outputs.has-changes == 'false'
+        run: echo "Skipping deployment - no changes detected"
